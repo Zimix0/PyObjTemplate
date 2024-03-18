@@ -1,0 +1,38 @@
+repos:
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: 'v4.5.0'
+    hooks:
+    -   id: check-added-large-files #防止提交巨型文件。
+    -   id: check-byte-order-marker #禁止具有 UTF-8 字节顺序标记的文件。
+    -   id: check-case-conflict #检查在不区分大小写的文件系统中是否存在冲突的文件。
+    -   id: check-docstring-first #检查在代码后定义文档字符串的常见错误。
+    -   id: check-json #检查 JSON 文件的可解析语法。
+    -   id: pretty-format-json # 设置格式化 JSON 文件的标准。
+    -   id: detect-private-key # 检测私钥的存在。
+    -   id: fix-encoding-pragma # 将 # -*- coding： utf-8 -*- 添加到 Python 文件的顶部。
+    -   id: requirements-txt-fixer #对requirements.txt中的条目进行排序。
+    -   id: trailing-whitespace  # 修剪尾随空格。
+
+-   repo: https://github.com/asottile/reorder-python-imports
+    rev: 'v3.12.0'
+    hooks:
+    -   id: reorder-python-imports # 对python import模块进行排序
+
+# 这三个三选一即可，推荐autopep8或者autoflake，这两个会报出错误并修改。flake8只会报出错误并不会修改
+-   repo: https://github.com/hhatto/autopep8
+    rev: 'v2.1.0'
+    hooks:
+    -   id: autopep8
+        args: [-i,--max-line-length=150,-v] # 标准的PEP 8 规范，另外设置最大长度为150
+
+# -   repo: https://github.com/PyCQA/flake8
+#     rev: '7.0.0'
+#     hooks:
+#     -   id: flake8
+#         args: [--max-line-length=150,--ignore=F401 E501]
+
+# -   repo: https://github.com/PyCQA/autoflake
+#     rev: v2.3.1
+#     hooks:
+#     -   id: autoflake
+#         args: [--remove-all-unused-imports, -i]
